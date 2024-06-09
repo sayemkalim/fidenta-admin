@@ -16,14 +16,13 @@ import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
-
 const defaultTheme = createTheme();
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+
   const handleLogin = async (e) => {
     e.preventDefault();
     let loadingToastId;
@@ -35,6 +34,7 @@ export default function Login() {
         progress: undefined,
         theme: "light",
       });
+
       const response = await fetch(
         "https://tutor-mern-server.onrender.com/api/v1/admin/login",
         {
@@ -43,15 +43,20 @@ export default function Login() {
           body: JSON.stringify({ email: username, password }),
         }
       );
+
       if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem("token", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
+        const result = await response.json();
+        const { accessToken, refreshToken } = result.data;
+
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+
         toast.update(loadingToastId, {
           render: "Login successful! Redirecting...",
           type: "success",
           autoClose: 2000,
         });
+
         setTimeout(() => {
           navigate("/dashboard");
         }, 2000);
@@ -131,7 +136,7 @@ export default function Login() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
