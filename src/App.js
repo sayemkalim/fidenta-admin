@@ -8,6 +8,8 @@ import AllStudents from "./Pages/AllStudent";
 import AllTeachers from "./Pages/AllTeachers";
 import Teacher from "./Pages/Teacher";
 import BannedStudents from "./Pages/BannedStudents";
+import Signup from "./Pages/SignUp";
+import BannedTeachers from "./Pages/BannedTeachers";
 
 function App() {
   return (
@@ -15,10 +17,13 @@ function App() {
       
       <Routes>
         <Route path="/" element={<LoginPage />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard" element={<Dashboard/>} />
         <Route path="/students" element={<AllStudents/>} />
         <Route path="/teachers" element={<AllTeachers/>} />
-        <Route path="/banned" element={<BannedStudents />} />
+        <Route path="/bannedstudents" element={<BannedStudents />} />
+        <Route path="/bannedteachers" element={<BannedTeachers />} />
+
         <Route path="/teacher/:id" element={<Teacher />} />
 
       </Routes>

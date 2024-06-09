@@ -26,11 +26,17 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="All Teachers" />
     </ListItemButton>
-    <ListItemButton component={Link} to="/banned">
+    <ListItemButton component={Link} to="/bannedstudents">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Banned" />
+      <ListItemText primary="Banned Students" />
+    </ListItemButton>
+    <ListItemButton component={Link} to="/bannedteachers">
+      <ListItemIcon>
+        <PeopleIcon />
+      </ListItemIcon>
+      <ListItemText primary="Banned Teachers" />
     </ListItemButton>
   </React.Fragment>
 );
